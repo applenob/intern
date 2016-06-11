@@ -72,9 +72,29 @@ class TitleSpider(scrapy.spiders.CrawlSpider):
             item['href'] = href
             item['time'] = time
             item['author'] = author
+            root_url = 'http://www.newsmth.net'
+            # content = scrapy.Request(root_url+href,self.parse_content)
+            if href!='':
+                content = self.parse_content(root_url+href)
+                print 'content:', content
+                item['content'] = content
             yield item
         # intern_messages = response.xpath('//table[@class="board-list tiz"]')
         # print intern_messages
         # for intern_message in intern_messages:
         #     title = intern_message.xpath('/td[@class="title_9"]/a').text()
         #     print title
+
+    def parse_content(self,url):
+        self.driver.get(url)
+        try:
+            element = WebDriverWait(self.driver, 30).until(
+                EC.presence_of_all_elements_located((By.TAG_NAME, 'table'))
+            )
+            print 'element:\n', element
+        except Exception, e:
+            print Exception, ":", e
+            print "wait failed"
+        page_source = self.driver.page_source
+        bs_obj = BeautifulSoup(page_source, "lxml")
+        return bs_obj.find('td', class_='a-content').p.get_text().encode('utf-8','ignore')

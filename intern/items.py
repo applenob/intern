@@ -15,4 +15,4 @@ class InternItem(scrapy.Item):
     href = scrapy.Field()
     author = scrapy.Field()
     time = scrapy.Field()
-    context = scrapy.Field()
+    content = scrapy.Field()
