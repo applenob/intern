@@ -67,13 +67,15 @@ ROBOTSTXT_OBEY = False
 #ITEM_PIPELINES = {
 #    'intern.pipelines.SomePipeline': 300,
 #}
-# ITEM_PIPELINES = {'intern.pipelines.MongoDBPipeline':300
-#                   }
-#
-# MONGODB_SERVER = "localhost"
-# MONGODB_PORT = 27017
-# MONGODB_DB = "intern"
-# MONGODB_COLLECTION = "items"
+ITEM_PIPELINES = {
+    'intern.pipelines.TagPipeline': 100,
+    'intern.pipelines.MongoDBPipeline':300
+                  }
+
+MONGODB_SERVER = "localhost"
+MONGODB_PORT = 27017
+MONGODB_DB = "intern"
+MONGODB_COLLECTION = "items"
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See http://doc.scrapy.org/en/latest/topics/autothrottle.html
 #AUTOTHROTTLE_ENABLED = True

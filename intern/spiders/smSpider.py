@@ -6,9 +6,10 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import  expected_conditions as EC
 from bs4 import BeautifulSoup
-import re
+from scrapy import signals
+from scrapy.xlib.pydispatch import dispatcher
 
-class TitleSpider(scrapy.spiders.CrawlSpider):
+class SMSpider(scrapy.spiders.CrawlSpider):
     '''
     #要建立一个 Spider，你可以为 scrapy.spider.BaseSpider 创建一个子类，并确定三个主要的、强制的属性：
     #name ：爬虫的识别名，它必须是唯一的，在不同的爬虫中你必须定义不同的名字.
@@ -16,7 +17,7 @@ class TitleSpider(scrapy.spiders.CrawlSpider):
     #parse() ：爬虫的方法，调用时候传入从每一个 URL 传回的 Response 对象作为参数，response 将会是 parse 方法的唯一的一个参数,
     #这个方法负责解析返回的数据、匹配抓取的数据(解析为 item )并跟踪更多的 URL。
     '''
-    name="title"
+    name="sm"
     base_url = 'http://www.newsmth.net/nForum/board/Intern'
     start_urls = [base_url]
     start_urls.extend([base_url+'?p='+str(i) for i in range(2,4)])
@@ -27,9 +28,13 @@ class TitleSpider(scrapy.spiders.CrawlSpider):
         scrapy.spiders.Spider.__init__(self)
         self.driver = webdriver.PhantomJS(executable_path='F:/runtime/python/phantomjs-2.1.1-windows/bin/phantomjs.exe')
         # self.driver = webdriver.Firefox()
+        dispatcher.connect(self.spider_closed, signals.spider_closed)
 
-    def __del__(self):
-        print '__del__ running'
+    # def __del__(self):
+    #     print '__del__ running'
+    #     self.driver.quit()
+
+    def spider_closed(self, spider):
         self.driver.quit()
 
     def parse(self,response):
@@ -76,7 +81,7 @@ class TitleSpider(scrapy.spiders.CrawlSpider):
             # content = scrapy.Request(root_url+href,self.parse_content)
             if href!='':
                 content = self.parse_content(root_url+href)
-                print 'content:', content
+                # print 'content:', content
                 item['content'] = content
             yield item
         # intern_messages = response.xpath('//table[@class="board-list tiz"]')

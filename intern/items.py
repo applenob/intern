@@ -16,3 +16,6 @@ class InternItem(scrapy.Item):
     author = scrapy.Field()
     time = scrapy.Field()
     content = scrapy.Field()
+    is_dev = scrapy.Field()
+    is_alg = scrapy.Field()
+    is_fin = scrapy.Field()
