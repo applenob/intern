@@ -1,10 +1,21 @@
 var https = require('https');
-var app = require('express')();
+var express = require('express');
+var app = express();
 var xmlBodyParser = require('express-xml-parser');
 var getUserInfo = require('./lib/user.js');
 var replyText = require('./lib/reply.js');
 var getToken = require('./lib/token.js');
 var changeMenu = require('./lib/menu.js');
+var getInternInfo = require('./model/internItem.js').getInternInfo;
+var renderCore = require('./model/internItem.js').renderCore;
+
+
+app.set("view engine","ejs");  
+app.use(express.static('public'));
+
+app.get('/info', function(req, res) { 
+   getInternInfo(res,renderCore);
+});
 
 app.use('/', xmlBodyParser({
   type: 'text/xml',
