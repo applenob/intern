@@ -14,7 +14,7 @@ var menuItem = {
            },
            {
               "type":"view",
-              "name":"机器学习类",
+              "name":"算法类",
               "url": serverUrl+"/info/alg"
            },
            {
@@ -23,25 +23,13 @@ var menuItem = {
               "url": serverUrl+"/info/fin"
            }]
       },
-      {
-           "name":"订阅",
-           "sub_button":[
-           {
-               "type":"click",
-               "name":"开发类",
-               "key":"V1001_RD"
-            },
-            {
-               "type":"click",
-               "name":"机器学习类",
-              "key":"V1001_ML"
-            },
-            {
-               "type":"click",
-               "name":"金融类",
-               "key":"V1001_FI"
-            }]
-       }]
+       
+     	{	
+          "type":"click",
+          "name":"每日推送",
+          "key":"V1001_PUSH"
+        }
+	]
 }
 
 var options = {

@@ -6,6 +6,8 @@ var getUserInfo = require('./lib/user.js');
 var replyText = require('./lib/reply.js');
 var getToken = require('./lib/token.js');
 var changeMenu = require('./lib/menu.js');
+var sendGroups = require('./lib/group.js');
+
 var getInternInfo = require('./model/internItem.js').getInternInfo;
 var getSingleItem = require('./model/internItem.js').getSingleItem;
 var renderCore = require('./model/internItem.js').renderCore;
@@ -63,6 +65,6 @@ app.post('/',function(req,res) {
   }
   //var reply=replyText(req.body,"消息推送成功");
 });
-
 getToken(changeMenu);
+getToken(sendGroups);
 app.listen(80);
