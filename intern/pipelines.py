@@ -75,8 +75,9 @@ class TagPipeline(object):
 
     def getTags(self,item):
         dev_keys = ['开发', 'Java', 'java', 'Andoird', '安卓', 'android', 'iOS', 'ios',
-                    '前端', 'HTML5', 'html5', '后端', 'PHP', 'Python', 'C语言', 'C++', 'c语言', 'c++', 'node',
-                    'Node', 'javascript', 'js', 'C#', '全栈', 'shell', 'Shell', '.net', '.Net', '技术']
+                    '前端', 'HTML5', 'html5', '后端', 'PHP', 'Python', 'C语言', 'C++',
+                    'c语言', 'c++', 'node','Node', 'javascript', 'js', 'C#',
+                    '全栈', 'shell', 'Shell', '.net', '.Net', '技术']
 
         alg_keys = ['算法', '机器学习', '自然语言处理', '深度学习', 'nlp', 'NLP', 'Hadoop', 'hadoop',
                     '数据挖掘', '数据分析', '大数据', 'Spark', '搜索', '推荐', '知识图谱', '机器人',
