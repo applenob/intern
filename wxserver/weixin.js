@@ -7,6 +7,7 @@ var replyText = require('./lib/reply.js');
 var getToken = require('./lib/token.js');
 var changeMenu = require('./lib/menu.js');
 var getInternInfo = require('./model/internItem.js').getInternInfo;
+var getSingleItem = require('./model/internItem.js').getSingleItem;
 var renderCore = require('./model/internItem.js').renderCore;
 
 
@@ -24,6 +25,12 @@ app.get('/info/dev', function(req, res) {
 app.get('/info/fin', function(req, res) {
    getInternInfo("fin",res,renderCore);
 });
+
+app.get('/info/item', function(req, res) {
+   console.log(req.query.id);
+   getSingleItem(req.query.id,res,renderCore);
+});
+
 
 app.use('/', xmlBodyParser({
   type: 'text/xml',

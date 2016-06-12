@@ -1,0 +1,10 @@
+{ hostname: 'api.weixin.qq.com',
+  port: 443,
+  path: '/cgi-bin/menu/create?access_token=IeGyLhYT9V2-1CvJ68wwf1X03pVJ42bUrky1wxiTR2AVZ8wBnt4DiLb0qdB2GaOQmtW4tjkYMgpdUnvWse1nTlsniApEFe_FLn-AgEBEKnZSPLBnYyReXFIJtHle2UedWZSjAAAMPI',
+  method: 'POST' }
+statusCode:  200
+headers:  { connection: 'close',
+  'content-type': 'application/json; encoding=utf-8',
+  date: 'Sun, 12 Jun 2016 08:54:10 GMT',
+  'content-length': '27' }
+{"errcode":0,"errmsg":"ok"}

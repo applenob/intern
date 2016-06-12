@@ -2,6 +2,7 @@ var tmpl = require("tmpl");
 var https = require("https");
 var menuChgHost = "api.weixin.qq.com";
 var menuChgPath = "/cgi-bin/menu/create?access_token={ACCESS_TOKEN}";
+var serverUrl= "http://172.110.27.168"
 var menuItem = {
      "button":[{
           "name":"查看",
@@ -9,17 +10,17 @@ var menuItem = {
           {
               "type":"view",
               "name":"开发类",
-              "url":"http://www.soso.com/"
+              "url": serverUrl+"/info/dev"
            },
            {
               "type":"view",
               "name":"机器学习类",
-              "url":"http://v.qq.com/"
+              "url": serverUrl+"/info/alg"
            },
            {
               "type":"view",
               "name":"金融类",
-              "url":"http://v.qq.com/"
+              "url": serverUrl+"/info/fin"
            }]
       },
       {

@@ -17,7 +17,7 @@ var internItem = mongoose.model('internItem', internItemSchema);
 
 
 var where = {};
-var options = { _id: 0};
+var options = {};
 function getInternInfo(title,res,callback) {
     internItem.find(where, options ,function(err, docs) {
     // err是错误信息，docs就是查询返回的文档，是一个数组
@@ -34,14 +34,26 @@ function getInternInfo(title,res,callback) {
 });
 }
 
+function getSingleItem(id,res,callback) {
+    var where = {_id:id};
+    internItem.find(where, options ,function(err, docs) {
+    // err是错误信息，docs就是查询返回的文档，是一个数组
+    console.log(docs);
+    titleStr ="实习信息";
+    res.render('item',{title:titleStr,infos:JSON.stringify(docs)});
+});
+}
+
+
 function renderCore(titleStr,res,obj)
 {
+   obj = JSON.stringify(obj);
    console.log(obj);
    res.render('index',{title:titleStr,infos:obj});
 }
 
 module.exports = {
     getInternInfo: getInternInfo,
-    renderCore : renderCore
-
+    renderCore : renderCore,
+    getSingleItem : getSingleItem
 }
