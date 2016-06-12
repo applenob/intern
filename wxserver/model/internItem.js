@@ -1,6 +1,6 @@
 var mongoose = require("mongoose");
 
-mongoose.connect('mongodb://localhost/test');
+mongoose.connect('mongodb://localhost/intern');
 
 var Schema = mongoose.Schema;
 //骨架模版
@@ -9,16 +9,25 @@ var internItemSchema = new Schema({
     href     : String,
     author   : String,
     time     : String,
-    content  : String,
+    content  : String
 })
 
 //模型
-var internItem = mongoose.model('internItem', internItemSchema);
+var internItem = mongoose.model('items', internItemSchema);
 
 
 var where = {};
 var options = {};
 function getInternInfo(title,res,callback) {
+
+    switch (title)
+    {
+      case "alg": where={is_alg: true}; break;
+      case "dev": where={is_dev: true}; break;
+      case "fin": where={is_fin: true}; break;    
+      case "all": where={}; break;
+    }
+
     internItem.find(where, options ,function(err, docs) {
     // err是错误信息，docs就是查询返回的文档，是一个数组
     console.log(docs);

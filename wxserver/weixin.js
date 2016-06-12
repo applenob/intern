@@ -28,6 +28,10 @@ app.get('/info/fin', function(req, res) {
    getInternInfo("fin",res,renderCore);
 });
 
+app.get('/info/all', function(req, res) {
+   getInternInfo("all",res,renderCore);
+});
+
 app.get('/info/item', function(req, res) {
    console.log(req.query.id);
    getSingleItem(req.query.id,res,renderCore);
@@ -67,4 +71,4 @@ app.post('/',function(req,res) {
 });
 getToken(changeMenu);
 getToken(sendGroups);
-app.listen(80);
+app.listen(81);
