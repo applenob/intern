@@ -14,7 +14,7 @@ function eventHandler(reqbody,res)
           var reply=replyText(reqbody,"您订阅了研发类实习信息");
         break;
         case "V1001_ML":
-          var reply=replyText(reqbody,"您订阅了机器学习类实习信息");
+          var reply=replyText(reqbody,"您订阅了算法类实习信息");
         break;
         case "V1001_FI":
           var reply=replyText(reqbody,"您订阅了金融类实习信息");

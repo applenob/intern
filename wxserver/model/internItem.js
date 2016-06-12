@@ -18,18 +18,26 @@ var internItem = mongoose.model('internItem', internItemSchema);
 
 var where = {};
 var options = { _id: 0};
-function getInternInfo(res,callback) {
+function getInternInfo(title,res,callback) {
     internItem.find(where, options ,function(err, docs) {
     // err是错误信息，docs就是查询返回的文档，是一个数组
     console.log(docs);
-    callback(res,docs);
+    titleStr="";
+    switch (title)
+    {
+      case "alg": titleStr = "算法类"; break;
+      case "dev": titleStr = "开发类"; break;
+      case "fin": titleStr = "金融类"; break;
+    }
+    titleStr+="实习信息";
+    callback(titleStr,res,docs);
 });
 }
 
-function renderCore(res,obj)
+function renderCore(titleStr,res,obj)
 {
    console.log(obj);
-   res.render('index',{title:obj.title,infos:obj});
+   res.render('index',{title:titleStr,infos:obj});
 }
 
 module.exports = {
