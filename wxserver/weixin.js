@@ -10,11 +10,19 @@ var getInternInfo = require('./model/internItem.js').getInternInfo;
 var renderCore = require('./model/internItem.js').renderCore;
 
 
-app.set("view engine","ejs");  
-app.use(express.static('public'));
+app.set("view engine","ejs");
+app.use(express.static(__dirname + '/public'));
 
-app.get('/info', function(req, res) { 
-   getInternInfo(res,renderCore);
+app.get('/info/alg', function(req, res) {
+   getInternInfo("alg",res,renderCore);
+});
+
+app.get('/info/dev', function(req, res) {
+   getInternInfo("dev",res,renderCore);
+});
+
+app.get('/info/fin', function(req, res) {
+   getInternInfo("fin",res,renderCore);
 });
 
 app.use('/', xmlBodyParser({
