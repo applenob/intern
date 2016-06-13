@@ -10,7 +10,7 @@
     <title><%- title %></title>
 
     <!-- Bootstrap core CSS -->
-    <link href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.css" rel="stylesheet">
+    <link href="/assets/css/bootstrap.css" rel="stylesheet">
     <!--external css-->
     <link href="/assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
 
@@ -49,22 +49,22 @@
       RIGHT SIDEBAR CONTENT
       *********************************************************************************************************************************************************** -->
       <div class="col-lg-6 ds" id="contentId">
-                      <h3><%- title %></h3>
-                        <div class="desc" ng-repeat="msg in msgs">
+		      <h3><%- title %></h3>
+			<div class="desc" ng-repeat="msg in msgs">
         <!-- <div class="thumb">
           <p><muted>{{msg.title}}</muted><br/></p>
           <p><muted>{{msg.author}}</muted><br/></p>
           <img src="{{msg.headimgurl}}" class="img-circle" width="35">
         </div> -->
         <div>
-              <p class="text-center"><font size=4px>{{msg.title}}</font><br/>
-                {{msg.content}}
-                <br/>
-                <br/>
-                <a href={{msg.href}}>原文链接</a>
-
+            <a href=item?id={{msg._id}}>
+              <p><font size=4px>{{msg.title}} • {{msg.time}}</font><br/>
+            </a>
+              	<br/>
+            </p>
         </div>
       </div>
+
 
 
           </section>
@@ -81,11 +81,14 @@
     <script class="include" type="text/javascript" src="/assets/js/jquery.dcjqaccordion.2.7.js"></script>
     <script src="/assets/js/jquery.scrollTo.min.js"></script>
     <script src="/assets/js/jquery.nicescroll.js" type="text/javascript"></script>
+    <script src="/assets/js/jquery.sparkline.js"></script>
 
 
     <!--common script for all pages-->
     <script src="/assets/js/common-scripts.js"></script>
 
+    <script type="text/javascript" src="/assets/js/gritter/js/jquery.gritter.js"></script>
+    <script type="text/javascript" src="/assets/js/gritter-conf.js"></script>
 
 
 
