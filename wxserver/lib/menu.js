@@ -2,7 +2,7 @@ var tmpl = require("tmpl");
 var https = require("https");
 var menuChgHost = "api.weixin.qq.com";
 var menuChgPath = "/cgi-bin/menu/create?access_token={ACCESS_TOKEN}";
-var serverUrl= "http://172.110.31.251:81"
+var serverUrl= "http://172.110.27.168"
 var menuItem = {
      "button":[{
           "name":"查看",

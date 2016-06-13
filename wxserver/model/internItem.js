@@ -16,10 +16,8 @@ var internItemSchema = new Schema({
 var internItem = mongoose.model('items', internItemSchema);
 
 
-var where = {};
-var options = {};
 function getInternInfo(title,res,callback) {
-
+    var where = {}
     switch (title)
     {
       case "alg": where={is_alg: true}; break;
@@ -27,7 +25,7 @@ function getInternInfo(title,res,callback) {
       case "fin": where={is_fin: true}; break;    
       case "all": where={}; break;
     }
-
+    var options = {content:0}
     internItem.find(where, options ,function(err, docs) {
     // err是错误信息，docs就是查询返回的文档，是一个数组
     console.log(docs);
@@ -45,6 +43,7 @@ function getInternInfo(title,res,callback) {
 
 function getSingleItem(id,res,callback) {
     var where = {_id:id};
+    var options = {};
     internItem.find(where, options ,function(err, docs) {
     // err是错误信息，docs就是查询返回的文档，是一个数组
     console.log(docs);
