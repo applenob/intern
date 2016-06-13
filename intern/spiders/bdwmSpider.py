@@ -33,6 +33,7 @@ class BDWMpider(scrapy.spiders.CrawlSpider):
         elif self.platform == 'win':
             self.driver = webdriver.PhantomJS(executable_path='F:/runtime/python/phantomjs-2.1.1-windows/bin/phantomjs.exe')
             # self.driver = webdriver.Firefox()
+        self.driver.set_page_load_timeout(10)
         dispatcher.connect(self.spider_closed, signals.spider_closed)
 
     # def __del__(self):
