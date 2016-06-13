@@ -51,17 +51,14 @@
       <div class="col-lg-6 ds" id="contentId">
                       <h3><%- title %></h3>
                         <div class="desc" ng-repeat="msg in msgs">
-        <!-- <div class="thumb">
-          <p><muted>{{msg.title}}</muted><br/></p>
-          <p><muted>{{msg.author}}</muted><br/></p>
-          <img src="{{msg.headimgurl}}" class="img-circle" width="35">
-        </div> -->
         <div>
               <p class="text-center"><font size=4px>{{msg.title}}</font><br/>
                 {{msg.content}}
                 <br/>
                 <br/>
-                <a href={{msg.href}}>原文链接</a>
+                <span ng-switch on="msg.base_url_index">
+  		<span ng-switch-when="0">来源:水木社区 <a href=http://www.newsmth.net{{msg.href}}>原文链接</a></span>
+		<span ng-switch-when="1">来源:北大bbs <a href=http://www.bdwm.net/bbs/{{msg.href}}>原文链接</a></span>
 
         </div>
       </div>
