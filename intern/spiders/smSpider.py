@@ -84,6 +84,7 @@ class SMSpider(scrapy.spiders.CrawlSpider):
             item['href'] = href
             item['time'] = time
             item['author'] = author
+            item['base_url_index'] = 0
             root_url = 'http://www.newsmth.net'
             # content = scrapy.Request(root_url+href,self.parse_content)
             if href!='':

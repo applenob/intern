@@ -19,3 +19,4 @@ class InternItem(scrapy.Item):
     is_dev = scrapy.Field()
     is_alg = scrapy.Field()
     is_fin = scrapy.Field()
+    base_url_index = scrapy.Field()

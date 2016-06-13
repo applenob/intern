@@ -83,6 +83,7 @@ class BDWMpider(scrapy.spiders.CrawlSpider):
                 item['href'] = href
                 item['time'] = time
                 item['author'] = author
+                item['base_url_index'] = 1
                 root_url = 'http://bbs.pku.edu.cn/bbs/'
                 # content = scrapy.Request(root_url+href,self.parse_content)
                 if href!='':
