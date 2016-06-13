@@ -8,6 +8,7 @@ from selenium.webdriver.support import  expected_conditions as EC
 from bs4 import BeautifulSoup
 from scrapy import signals
 from scrapy.xlib.pydispatch import dispatcher
+from intern.platform import getPlatform
 
 class SMSpider(scrapy.spiders.CrawlSpider):
     '''
@@ -23,10 +24,14 @@ class SMSpider(scrapy.spiders.CrawlSpider):
     start_urls.extend([base_url+'?p='+str(i) for i in range(2,4)])
     print start_urls
     # start_urls = ['http://www.newsmth.net/']
+    platform = getPlatform()
 
     def __init__(self):
         scrapy.spiders.Spider.__init__(self)
-        self.driver = webdriver.PhantomJS(executable_path='F:/runtime/python/phantomjs-2.1.1-windows/bin/phantomjs.exe')
+        if self.platform == 'linux':
+            self.driver = webdriver.PhantomJS()
+        elif self.platform == 'win':
+            self.driver = webdriver.PhantomJS(executable_path='F:/runtime/python/phantomjs-2.1.1-windows/bin/phantomjs.exe')
         # self.driver = webdriver.Firefox()
         dispatcher.connect(self.spider_closed, signals.spider_closed)
 
