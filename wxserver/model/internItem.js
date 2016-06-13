@@ -1,7 +1,11 @@
 var mongoose = require("mongoose");
-
+var getToken = require('../lib/token.js');
 mongoose.connect('mongodb://localhost/intern');
+var infoCountFile = "./config/infoCount";
+var fs = require('fs');
 
+var group = require('../lib/group.js');
+var sendGroups = group.sendGroups;
 var Schema = mongoose.Schema;
 //骨架模版
 var internItemSchema = new Schema({
@@ -15,6 +19,24 @@ var internItemSchema = new Schema({
 //模型
 var internItem = mongoose.model('items', internItemSchema);
 
+function getInfoCount(lastCount,callback) {
+    var where = {}
+    var options = {content:0}
+    internItem.find(where, options ,function(err, docs) {
+    // err是错误信息，docs就是查询返回的文档，是一个数组
+         nowCount = docs.length;
+         var diff = nowCount-lastCount;
+         console.log(diff)
+	 if (diff > 10)
+         {
+            fs.writeFileSync(infoCountFile,nowCount);
+	    var content = callback(diff);
+            console.log(content);
+            getToken(sendGroups,content);
+         }
+});
+
+}
 
 function getInternInfo(title,res,callback) {
     var where = {}
@@ -37,6 +59,7 @@ function getInternInfo(title,res,callback) {
       case "fin": titleStr = "金融类"; break;
     }
     titleStr+="实习信息";
+    docs.reverse();
     callback(titleStr,res,docs);
 });
 }
@@ -63,5 +86,6 @@ function renderCore(titleStr,res,obj)
 module.exports = {
     getInternInfo: getInternInfo,
     renderCore : renderCore,
-    getSingleItem : getSingleItem
+    getSingleItem : getSingleItem,
+    getInfoCount : getInfoCount
 }

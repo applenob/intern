@@ -30,12 +30,20 @@ var menuItem = {
            ]
       },
        
-     	{	
-          "type":"click",
+     	{
           "name":"每日推送",
-          "key":"V1001_PUSH"
-        }
-	]
+          "sub_button":[
+          {
+              "type":"click",
+              "name":"简介",
+              "key":"V101_DE"
+           },
+           {
+              "type":"click",
+              "name":"示例",
+              "key": "V101_SA"
+           }]
+	}]
 }
 
 var options = {
@@ -46,11 +54,11 @@ var options = {
 };
 
 
-function changeMenu(token)
+function changeMenu(obj)
 {
 
   options.path=tmpl(menuChgPath,{
-    ACCESS_TOKEN:token
+    ACCESS_TOKEN:obj.token
   });
   console.log(options);
   var req = https.request(options, function (res){
