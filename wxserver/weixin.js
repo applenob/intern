@@ -6,7 +6,10 @@ var getUserInfo = require('./lib/user.js');
 var replyText = require('./lib/reply.js');
 var getToken = require('./lib/token.js');
 var changeMenu = require('./lib/menu.js');
+var sendGroups = require('./lib/group.js');
+
 var getInternInfo = require('./model/internItem.js').getInternInfo;
+var getSingleItem = require('./model/internItem.js').getSingleItem;
 var renderCore = require('./model/internItem.js').renderCore;
 
 
@@ -24,6 +27,16 @@ app.get('/info/dev', function(req, res) {
 app.get('/info/fin', function(req, res) {
    getInternInfo("fin",res,renderCore);
 });
+
+app.get('/info/all', function(req, res) {
+   getInternInfo("all",res,renderCore);
+});
+
+app.get('/info/item', function(req, res) {
+   console.log(req.query.id);
+   getSingleItem(req.query.id,res,renderCore);
+});
+
 
 app.use('/', xmlBodyParser({
   type: 'text/xml',
@@ -56,6 +69,6 @@ app.post('/',function(req,res) {
   }
   //var reply=replyText(req.body,"消息推送成功");
 });
-
 getToken(changeMenu);
-app.listen(80);
+getToken(sendGroups);
+app.listen(81);

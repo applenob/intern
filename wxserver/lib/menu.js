@@ -2,6 +2,7 @@ var tmpl = require("tmpl");
 var https = require("https");
 var menuChgHost = "api.weixin.qq.com";
 var menuChgPath = "/cgi-bin/menu/create?access_token={ACCESS_TOKEN}";
+var serverUrl= "http://172.110.31.251:81"
 var menuItem = {
      "button":[{
           "name":"查看",
@@ -9,38 +10,32 @@ var menuItem = {
           {
               "type":"view",
               "name":"开发类",
-              "url":"http://www.soso.com/"
+              "url": serverUrl+"/info/dev"
            },
            {
               "type":"view",
-              "name":"机器学习类",
-              "url":"http://v.qq.com/"
+              "name":"算法类",
+              "url": serverUrl+"/info/alg"
            },
            {
               "type":"view",
               "name":"金融类",
-              "url":"http://v.qq.com/"
-           }]
+              "url": serverUrl+"/info/fin"
+           },
+	   {
+              "type":"view",
+              "name":"全部",
+              "url": serverUrl+"/info/all"
+           }
+           ]
       },
-      {
-           "name":"订阅",
-           "sub_button":[
-           {
-               "type":"click",
-               "name":"开发类",
-               "key":"V1001_RD"
-            },
-            {
-               "type":"click",
-               "name":"机器学习类",
-              "key":"V1001_ML"
-            },
-            {
-               "type":"click",
-               "name":"金融类",
-               "key":"V1001_FI"
-            }]
-       }]
+       
+     	{	
+          "type":"click",
+          "name":"每日推送",
+          "key":"V1001_PUSH"
+        }
+	]
 }
 
 var options = {

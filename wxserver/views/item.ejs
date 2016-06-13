@@ -61,11 +61,12 @@
           <img src="{{msg.headimgurl}}" class="img-circle" width="35">
         </div> -->
         <div>
-            <a href=item?id={{msg._id}}>
-              <p><font size=4px>{{msg.title}} • {{msg.time}}</font><br/>
-            </a>
+              <p class="text-center"><font size=4px>{{msg.title}}</font><br/>
+	        {{msg.content}}
+		<br/>
               	<br/>
-            </p>
+		<a href={{msg.href}}>原文链接</a>
+            
         </div>
       </div>
 
