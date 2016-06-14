@@ -26,7 +26,13 @@
 
 ##使用帮助：
   ![](https://raw.githubusercontent.com/applenob/intern/master/wxserver/public/2dcode.jpeg)
+  进入自行搭建的公众号或扫描上图即可使用
+  这里需要一张微信号截图
+  
+  这里需要一张查看实习信息的图
 
-
-
+  这里需要一张推送的图
+  
 ##开发人员信息：
+  陈俊文 applenob
+  李今晖 jinhuiLee
