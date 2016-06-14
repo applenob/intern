@@ -34,7 +34,7 @@ class SMSpider(scrapy.spiders.CrawlSpider):
             self.driver = webdriver.PhantomJS(executable_path='F:/runtime/python/phantomjs-2.1.1-windows/bin/phantomjs.exe')
         # self.driver = webdriver.Firefox()
         # self.driver.set_timeout(30)  # seconds
-        self.driver.set_page_load_timeout(10)
+        self.driver.set_page_load_timeout(15)
         dispatcher.connect(self.spider_closed, signals.spider_closed)
 
     # def __del__(self):
