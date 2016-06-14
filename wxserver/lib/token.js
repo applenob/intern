@@ -6,13 +6,16 @@ var tsFile = "./config/timestamp"
 const TWOHOUR = ( 3600 - 100 ) * 1000;
 
 token=""
-function getToken(callback)
+function getToken(callback,content)
 {
   var lastTime = fs.readFileSync(tsFile);
   var lastToken = fs.readFileSync(tokenFile);
-  if (Date.now()-lastTime < TWOHOUR)
+  if (Date.now()-lastTime < TWOHOUR && lastToken)
   {
-    callback(lastToken);
+    var obj={};
+    obj.token = lastToken;
+    obj.content = content;
+    callback(obj);
     return lastToken;
   }
   tmpl = require("tmpl");
@@ -34,7 +37,11 @@ function getToken(callback)
     res.on('end',function(data){
       token=JSON.parse(chunk).access_token;
       console.log(token);
-      callback(token);
+      var obj={};
+      obj.token = token;
+      obj.content = content;
+      console.log(obj);
+      callback(obj);
       fs.writeFileSync(tokenFile,token);
       fs.writeFileSync(tsFile,Date.now());
       console.log(chunk);

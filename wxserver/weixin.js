@@ -6,12 +6,13 @@ var getUserInfo = require('./lib/user.js');
 var replyText = require('./lib/reply.js');
 var getToken = require('./lib/token.js');
 var changeMenu = require('./lib/menu.js');
-var sendGroups = require('./lib/group.js');
+var group = require('./lib/group.js');
+var sendGroups = group.sendGroups;
 
 var getInternInfo = require('./model/internItem.js').getInternInfo;
 var getSingleItem = require('./model/internItem.js').getSingleItem;
 var renderCore = require('./model/internItem.js').renderCore;
-
+var crawl = require('./lib/schedule.js');
 
 app.set("view engine","ejs");
 app.use(express.static(__dirname + '/public'));
@@ -69,6 +70,8 @@ app.post('/',function(req,res) {
   }
   //var reply=replyText(req.body,"消息推送成功");
 });
+
 getToken(changeMenu);
-getToken(sendGroups);
-app.listen(81);
+//getToken(sendGroups,"我们上线了");
+app.listen(80);
+crawl();

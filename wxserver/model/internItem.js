@@ -1,7 +1,11 @@
 var mongoose = require("mongoose");
-
+var getToken = require('../lib/token.js');
 mongoose.connect('mongodb://localhost/intern');
+var infoCountFile = "./config/infoCount";
+var fs = require('fs');
 
+var group = require('../lib/group.js');
+var sendGroups = group.sendGroups;
 var Schema = mongoose.Schema;
 //骨架模版
 var internItemSchema = new Schema({
@@ -15,11 +19,27 @@ var internItemSchema = new Schema({
 //模型
 var internItem = mongoose.model('items', internItemSchema);
 
+function getInfoCount(lastCount,callback) {
+    var where = {}
+    var options = {content:0}
+    internItem.find(where, options ,function(err, docs) {
+    // err是错误信息，docs就是查询返回的文档，是一个数组
+         nowCount = docs.length;
+         var diff = nowCount-lastCount;
+         console.log(diff)
+	 if (diff > 10)
+         {
+            fs.writeFileSync(infoCountFile,nowCount);
+	    var content = callback(diff);
+            console.log(content);
+            getToken(sendGroups,content);
+         }
+});
 
-var where = {};
-var options = {};
+}
+
 function getInternInfo(title,res,callback) {
-
+    var where = {}
     switch (title)
     {
       case "alg": where={is_alg: true}; break;
@@ -27,7 +47,7 @@ function getInternInfo(title,res,callback) {
       case "fin": where={is_fin: true}; break;    
       case "all": where={}; break;
     }
-
+    var options = {content:0}
     internItem.find(where, options ,function(err, docs) {
     // err是错误信息，docs就是查询返回的文档，是一个数组
     console.log(docs);
@@ -39,12 +59,14 @@ function getInternInfo(title,res,callback) {
       case "fin": titleStr = "金融类"; break;
     }
     titleStr+="实习信息";
+    docs.reverse();
     callback(titleStr,res,docs);
 });
 }
 
 function getSingleItem(id,res,callback) {
     var where = {_id:id};
+    var options = {};
     internItem.find(where, options ,function(err, docs) {
     // err是错误信息，docs就是查询返回的文档，是一个数组
     console.log(docs);
@@ -64,5 +86,6 @@ function renderCore(titleStr,res,obj)
 module.exports = {
     getInternInfo: getInternInfo,
     renderCore : renderCore,
-    getSingleItem : getSingleItem
+    getSingleItem : getSingleItem,
+    getInfoCount : getInfoCount
 }

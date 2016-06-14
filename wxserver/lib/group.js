@@ -22,11 +22,11 @@ var options = {
 };
 
 
-function sendGroups(token)
+function sendGroups(obj)
 {
 
   options.path=tmpl(menuChgPath,{
-    ACCESS_TOKEN:token
+    ACCESS_TOKEN:obj.token
   });
   console.log(options);
  
@@ -39,6 +39,7 @@ function sendGroups(token)
       process.stdout.write(d);
     });
   });
+  msg.text.content = obj.content;
   req.end(JSON.stringify(msg));
 
   req.on('error', function (e){
@@ -47,4 +48,4 @@ function sendGroups(token)
 
 }
 
-module.exports = sendGroups;
+module.exports = {sendGroups:sendGroups};
