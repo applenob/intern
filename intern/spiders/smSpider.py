@@ -99,7 +99,11 @@ class SMSpider(scrapy.spiders.CrawlSpider):
         #     print title
 
     def parse_content(self,url):
-        self.driver.get(url)
+        try:
+            self.driver.get(url)
+        except Exception,e:
+            print "give up one detail"
+            return ""
         try:
             element = WebDriverWait(self.driver, 30).until(
                 EC.presence_of_all_elements_located((By.TAG_NAME, 'table'))

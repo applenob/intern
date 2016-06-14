@@ -42,6 +42,9 @@ class MongoDBPipeline(object):
         if item['title'] == '':
             valid = False
             raise DropItem("title is '' ")
+        if item['content'] == '':
+            valid = False
+            raise DropItem("content is '' ")
         if valid:
             self.collection.insert(dict(item))
             # log.msg("intern item added to MongoDB database!",
