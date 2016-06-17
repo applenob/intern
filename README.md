@@ -32,11 +32,10 @@
   ![](https://raw.githubusercontent.com/applenob/intern/master/wxserver/public/3.jpg)  
   分开发、算法、金融三类查看
   
-  
-  
   ![](https://raw.githubusercontent.com/applenob/intern/master/wxserver/public/4.jpg)  
   
-  查看职位列表效果
+  查看职位列表效果  
+  
   ![](https://raw.githubusercontent.com/applenob/intern/master/wxserver/public/6.jpg)  
   查看具体职位  
   
