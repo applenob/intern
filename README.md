@@ -25,14 +25,28 @@
 ```
 
 ##使用帮助：
-  ![](https://raw.githubusercontent.com/applenob/intern/master/wxserver/public/2dcode.jpeg)
-  进入自行搭建的公众号或扫描上图即可使用
-  这里需要一张微信号截图
+  ![](https://raw.githubusercontent.com/applenob/intern/master/wxserver/public/2dcode.jpeg)  
   
-  这里需要一张查看实习信息的图
+  进入自行搭建的公众号或扫描上图即可使用  
+  
+  ![](https://raw.githubusercontent.com/applenob/intern/master/wxserver/public/3.jpg)  
+  分开发、算法、金融三类查看
+  
+  
+  
+  ![](https://raw.githubusercontent.com/applenob/intern/master/wxserver/public/4.jpg)  
+  
+  查看职位列表效果
+  ![](https://raw.githubusercontent.com/applenob/intern/master/wxserver/public/6.jpg)  
+  查看具体职位  
+  
+  ![](https://raw.githubusercontent.com/applenob/intern/master/wxserver/public/7.jpg)  
+  
+  可跳转至原始链接  
+  
 
-  这里需要一张推送的图
+  
   
 ##开发人员信息：
-  陈俊文 applenob
+  陈俊文 applenob  
   李今晖 jinhuiLee
