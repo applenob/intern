@@ -8,8 +8,9 @@
   python 2.7 + node 4.x:  
   sudo apt-get install python2.7 python2.7-dev python-pip  
   sudo apt-get install libxml2-dev libxml2 libxslt1.1 libxslt1-dev zlib1g-dev zlib1g phantomjs
-  pip install pydispatch pydispacher w3lib lxml cssselect web twisted selenium bs4 pymongo
-  pip install scrapy
+  pip install w3lib lxml cssselect twisted selenium bs4 pymongo  
+  pip install pydispatch pydispacher  
+  pip install scrapy  
   
   node依赖：
   cd wxserver && npm install
