@@ -11,6 +11,8 @@
   pip install w3lib lxml cssselect twisted selenium bs4 pymongo  
   pip install pydispatch pydispacher  
   pip install scrapy  
+  
+  注意：phantomjs在ubuntu下直接使用apt安装，会导致功能不全，需要去[官网](http://phantomjs.org/download.html)下载安装
   
   node依赖：
   cd wxserver && npm install
